@@ -46,9 +46,44 @@ public class Solution {
 //		int ans = count_sec(3,4,1);
 //		System.out.println(ans);
 
-		String ans = contains_all_english_alphabet("The four boxing wizard jumps over the Quickly");
-		System.out.println(ans); 
+//		String ans = contains_all_english_alphabet("The four boxing wizard jumps over the Quickly");
+//		System.out.println(ans); 
+		
+//		int[] energy= {1,1,1,1};
+//		int[] experince= {1,1,1,50};
+//		int initialEnergy=1;
+//		int initialExperince=1;
+//		
+//		int ans = minNumberOfHours(initialEnergy, initialExperince, energy, experince);
+//		System.out.println(ans);
+		
+		
 	}
+	
+	 public static int minNumberOfHours(int initialEnergy, int initialExperience, int[] energy, int[] experience) {
+	        int hours=0;
+	        int senergy=0;
+	        for(int i=0;i<energy.length;i++) {
+	        	senergy+=energy[i];
+	        }
+//	        System.out.println(senergy);
+	        hours=senergy-initialEnergy+1;
+//	        System.out.println(hours);
+	        int sexperince=initialExperience;
+	        int count=0;
+	        
+	        if(experience.length==1 && sexperince>experience[0]) return hours;
+	        
+	        for(int i=0;i<experience.length;i++) {
+	        	if(experience[i]>=sexperince) {
+	        		count=experience[i]-sexperince;
+	        	}
+	        	sexperince+=experience[i];
+//	        	System.out.println(sexperince);
+	        }
+	        hours=hours+count+1;
+		 return hours;
+	    }
 
 	private static String contains_all_english_alphabet(String string) {
 		Map<Character, Boolean> id = new HashMap<Character, Boolean>(); 
