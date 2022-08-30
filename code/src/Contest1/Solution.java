@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -56,6 +57,15 @@ public class Solution {
 //		
 //		int ans = minNumberOfHours(initialEnergy, initialExperince, energy, experince);
 //		System.out.println(ans);
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] a = new int[n];
+		for(int i=0;i<n;i++) {
+			a[i]=sc.nextInt();
+		}
+		
+//		while(i<n && )
 		
 		
 	}
