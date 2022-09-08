@@ -58,19 +58,74 @@ public class Solution {
 //		int ans = minNumberOfHours(initialEnergy, initialExperince, energy, experince);
 //		System.out.println(ans);
 		
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int[] a = new int[n];
-		for(int i=0;i<n;i++) {
-			a[i]=sc.nextInt();
+//		Scanner sc = new Scanner(System.in);
+//		int n = sc.nextInt();
+//		int[] a = new int[n];
+//		for(int i=0;i<n;i++) {
+//			a[i]=sc.nextInt();
+//		}
+
+//		Scanner sc = new Scanner(System.in);
+//		int G = sc.nextInt();
+//		int S = sc.nextInt();
+//		int A= sc.nextInt();
+//		int B = sc.nextInt();
+//		
+//		long gold_price = G * A;
+//		long silver_price = S * B;
+//		
+//		if(gold_price>=silver_price) {
+//			System.out.println("Gold");
+//		}else {
+//			System.out.println("Silver");
+//		}
+		
+//		Scanner sc = new Scanner(System.in);
+//		int T = sc.nextInt();
+//		for(int i=0;i<T;i++) {
+//			int N = sc.nextInt();
+//			String s = sc.next();
+//			System.out.println(rearrangement(N,s));
+		
+		String s = "zz";
+		int[] distance= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+		
+		System.out.println(checkDistances(s,distance));
+		
 		}
 		
-//		while(i<n && )
-		
-		
-	}
+	 	public static boolean checkDistances(String s, int[] distance) {
+	     int n=s.length();
+	     final String alphabet = "abcdefghijklmnopqrstuvwxyz";
+	     int[] temp = new int[26];
+	 		for(int i=0;i<n;i++) {
+	 			for(int j=i+1;j<n;j++) {
+	 				if(s.charAt(i)==s.charAt(j)) {
+	 					int k = alphabet.indexOf(s.charAt(i));
+	 					temp[s.charAt(i)-'a']=j-i-1;
+	 					if(temp[k]==distance[k]) {
+	 						continue;
+	 					}else return false; 
+	 				}
+	 			}
+	 		}
+	 		
+//	 		System.out.println(Arrays.toString(temp));
+		 return true;
+	    }
 	
-	 public static int minNumberOfHours(int initialEnergy, int initialExperience, int[] energy, int[] experience) {
+	 private static int rearrangement(int n, String s) {
+		 int count=0;
+		 for(int i=0;i<n;i++) {
+			 if(s.charAt(i)=='1') {
+				 count++;
+			 }
+		 }
+		 if(count<n/2) return 1;
+		 return 0;
+	}
+
+	public static int minNumberOfHours(int initialEnergy, int initialExperience, int[] energy, int[] experience) {
 	        int hours=0;
 	        int senergy=0;
 	        for(int i=0;i<energy.length;i++) {
