@@ -2,10 +2,13 @@ package Contest1;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.Stack;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -87,13 +90,59 @@ public class Solution {
 //			String s = sc.next();
 //			System.out.println(rearrangement(N,s));
 		
-		String s = "zz";
-		int[] distance= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+//		String s = "zz";
+//		int[] distance= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+//		
+//		System.out.println(checkDistances(s,distance));
 		
-		System.out.println(checkDistances(s,distance));
+//		int[] nums = {1,0,2,4,4,1};
+//		int ans = mostFrequentEven(nums);
+//		System.out.println(ans);
+		
+		String s = "abacaba";
+		int ans = partitionString(s);
+		System.out.println(ans);
 		
 		}
 		
+	public static int partitionString(String s) {
+        int count= (s.isEmpty())?0:1;
+         int i=0;
+         Set<Character> set = new HashSet<>();
+       while(i<s.length()) {
+        		if(set.contains(s.charAt(i))) {
+        			set.clear();
+        			count++;
+        		}
+        		set.add(s.charAt(i));
+        		i++;
+        	}
+        return count;
+    }
+	
+		public static int mostFrequentEven(int[] nums) {
+			int max= 0;
+			
+			Map<Integer,Integer> map = new TreeMap<>();
+			for(int i=0;i<nums.length;i++) {
+				if(nums[i]%2==0) {
+					map.put(nums[i], map.getOrDefault(nums[i],0)+1);
+				}
+			}
+			int val=0;
+//			System.out.println(map);
+			for(int i:map.keySet()) {
+//				System.out.println(i);
+				if(map.get(i).intValue()>max) {
+					val=i;
+					max=map.get(i).intValue();
+//					System.out.println(i);
+				}
+			}
+			if(map.isEmpty()) return -1;
+			return val;
+		}
+	
 	 	public static boolean checkDistances(String s, int[] distance) {
 	     int n=s.length();
 	     final String alphabet = "abcdefghijklmnopqrstuvwxyz";
